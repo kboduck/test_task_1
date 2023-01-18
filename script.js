@@ -16,35 +16,31 @@ window.onload=function(){   //Wait when window loaded
             }
             else{                       //This condition runs when parcing found number in string 'source' 
                 res += source[i];       //Add founded value to variable that contain result of parcing
-                if(i + 1 == source.length){
-                    res += ";";
+                if(i + 1 == source.length){//This condition runs when cycle end is on number
+                    res += ";";         //Add ';' to the end of string if end is number, because it needed for correct work next cycle
                 }
             }
         }
-        console.log(res);
-        var a = "";
-        var b = 0;
-        for(i = 0; i < res.length; i++){
-            if(res[i] == ";"){
-                b = Number(a);
-                console.log(b);
-                sum = sum + b;
-                a = "";
+        var a = "";                     //This variable contain pre-parced numbers for use in internal condition
+        var b = 0;                      //This variable contain changed to type number value of variable 'a'
+        for(i = 0; i < res.length; i++){//Cycle parsing variable 'res'
+            if(res[i] == ";"){          //This condition runs when reached separator ";"
+                b = Number(a);          //Write translated to type number value of first price from 'res'
+                sum = sum + b;          //Add next founded price to writed in memory('sum') value
+                a = "";                 //Clear value of 'a' for next use in cycle
                 continue;
             }
-            a += res[i];
-            console.log("a:", a);
+            a += res[i];                //Collect values of first price from 'res' in variable 'a', type string
         }
-        if(sum == 0){
-            sum = a;
+        if(sum == 0){                   //When 'res' contains only one price, 'sum' not initialized by cycle
+            sum = a;                    //Write the only price from 'res' collected by cycle
         }
-        console.log("Sum:", sum);
 };
     var el = document.getElementById('result');//Select field that contain the result value
-    var res = ""; 
-    var sum = 0;                             //Initialize variable for result value of parcing
+    var res = "";                              //Initialize 'res' by empty string 
+    var sum = 0;                               //Initialize variable for result value of parcing
         function someFunc(){                   //Function that write res value to result field
-            el.value = sum /100;
+            el.value = sum /100;               //Result in needed to user format
         }
         function clear_result(){               //Function for clear result field
             el.value = "";
@@ -52,13 +48,13 @@ window.onload=function(){   //Wait when window loaded
             sum = 0;
             a = "";
         }
-        function clear_task(){
+        function clear_task(){                 //Function that clear the task input
             input.value = "";
         }
-const button = document.querySelector('#myButton');
-const clear = document.querySelector("#clear");
-const clear_input = document.querySelector('#clear_task')
-button.addEventListener('click', callback);
+const button = document.querySelector('#myButton'); //Write selector of calculate result button
+const clear = document.querySelector("#clear");     //Write selector of clear result field button
+const clear_input = document.querySelector('#clear_task');  //Write selector of clear input check button
+button.addEventListener('click', callback);         //Call main function when user maked click on calculate result button 
 button.addEventListener('click', someFunc);
 clear.addEventListener('click', clear_result);
 clear_input.addEventListener('click', clear_task);

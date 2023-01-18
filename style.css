@@ -35,3 +35,7 @@ button#clear_task:hover{
 input#result{
     margin-top: 300px;
 }
+p{
+    position: absolute;
+    margin-left: 700px;
+}
